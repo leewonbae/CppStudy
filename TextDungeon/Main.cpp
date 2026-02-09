@@ -2,16 +2,18 @@
 //
 
 #include <iostream>
+#include <memory>
 #include "Player.h"
+#include "Weapon.h"
 int main()
 {
     std::cout << "Hello World!\n";
 
-    Player player("testLwb");
+    Player player("용사");
 
-    Player* ptrPlayer = new Player("ptrLwb");
+    player.EquipItem(std::make_unique<Weapon>("검", 10));
 
-
+    std::cout << "Hello World!\n";
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴

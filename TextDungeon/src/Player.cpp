@@ -20,11 +20,18 @@ Player::~Player()
 
 }
 
-void Player::ShowStatus()
+void Player::EquipItem(std::unique_ptr<Item> ptrItem)
+{
+	std::cout << "¾ÆÀÌÅÛ ÀåÂø" << ptrItem->GetName() << std::endl;
+	_itemSlotMap[ptrItem->GetItemSlot()] = std::move(ptrItem);
+}
+
+void Player::ShowStatus() const
 {
 	std::cout << "name :" << _name << std::endl;
 	std::cout << "HealthPoint :" << _healthPoint << std::endl;
 }
+
 
 void Player::Init()
 {
