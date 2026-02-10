@@ -127,11 +127,13 @@
     <ClCompile Include="include\Commons.h" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="src\Item.cpp" />
+    <ClCompile Include="src\Monster.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Item.h" />
+    <ClInclude Include="include\Monster.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\Weapon.h" />
   </ItemGroup>

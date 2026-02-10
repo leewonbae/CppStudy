@@ -5,6 +5,7 @@
 #include <memory>
 #include "Player.h"
 #include "Weapon.h"
+#include "Monster.h"
 int main()
 {
     std::cout << "Hello World!\n";
@@ -13,6 +14,21 @@ int main()
 
     player.EquipItem(std::make_unique<Weapon>("검", 10));
 
+	Monster monster("슬라임");
+    
+	player.SetTargetMonster(&monster);
+	monster.SetTaretPlayer(&player);
+
+    player.AttackMonster();
+    player.AttackMonster();
+    player.AttackMonster();
+    player.AttackMonster();
+    player.AttackMonster();
+    player.AttackMonster();
+    player.AttackMonster();
+    player.AttackMonster();
+    player.AttackMonster();
+    player.AttackMonster();
     std::cout << "Hello World!\n";
 }
 
