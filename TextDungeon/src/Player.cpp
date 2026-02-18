@@ -3,22 +3,22 @@
 #include "Weapon.h"
 
 Player::Player() {
-	std::cout << "name : " << _name << std::endl;
+	std::cout << "Player 持失切"<< std::endl;
 
 	Init();
 }
 
 Player::Player(std::string name)
+	: _name(name)
 {
-	_name = name;
-	std::cout << "name :" << _name << std::endl;
+	std::cout << "Player 持失切"<< std::endl;
 
 	Init();
 }
 
 Player::~Player()
 {
-	std::cout << "社瑚切 : " << _name << std::endl;
+	std::cout << "Player 社瑚切" << std::endl;
 }
 
 void Player::EquipItem(std::unique_ptr<Item> ptrItem)

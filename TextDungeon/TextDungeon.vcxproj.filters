@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="헤더 파일\items">
-      <UniqueIdentifier>{7122b19f-67d5-49cc-9149-168a31cc190e}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -30,24 +27,36 @@
     <ClCompile Include="src\Weapon.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="include\Commons.h">
-      <Filter>헤더 파일</Filter>
-    </ClCompile>
     <ClCompile Include="src\Monster.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UserInterfaceManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Player.h">
+    <ClInclude Include="src\Commons.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="include\Item.h">
-      <Filter>헤더 파일\items</Filter>
+    <ClInclude Include="src\Item.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="include\Weapon.h">
-      <Filter>헤더 파일\items</Filter>
+    <ClInclude Include="src\Monster.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="include\Monster.h">
+    <ClInclude Include="src\Player.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Weapon.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UserInterfaceManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
