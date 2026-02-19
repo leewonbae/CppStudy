@@ -1,64 +1,79 @@
 #include "GameManager.h"
+#include "PlayerManager.h"
 #include "UserInterfaceManager.h"
-#include "Player.h"
 
-GameManager::GameManager(const std::string& gameName) 
+GameManager::GameManager(const std::string& gameName)
 	: _gameName(gameName),
 	_ptrPlayer(nullptr)
 {
+	_ptrUserInterfaceManager = std::make_unique<UserInterfaceManager>();
+	_ptrPlayerManager = std::make_unique<PlayerManager>(_ptrUserInterfaceManager.get());
 }
 
 GameManager::~GameManager()
 {
 }
 
-void GameManager::InitManagers()
-{
-	_ptrUserInterfaceManager = std::make_unique<UserInterfaceManager>();
-}
-
-void GameManager::StartGame()
+void GameManager::ShowMainMenu()
 {
 	bool isRunning = true;
 	while (isRunning)
 	{
-		
 		_ptrUserInterfaceManager.get()->ShowMainMenu();
-		
-		int32_t input = _ptrUserInterfaceManager.get()->GetUserInputOnlyNumber();
-		
-		E_GAME_MANAGER_INPUT_STATE choice = static_cast<E_GAME_MANAGER_INPUT_STATE>(input);
-		
-		switch (choice)
-		{
-			case E_GAME_MANAGER_INPUT_STATE::START_GAME:
-				_ptrUserInterfaceManager.get()->PrintText("게임을 시작합니다.");
-				if(_ptrPlayer == nullptr)
-				{
-					CreatePlayer();
-				}
-				break;
 
-			case E_GAME_MANAGER_INPUT_STATE::EXIT_GAME:
-				isRunning = false;
-				break;
+		int32_t mainMenuInput = _ptrUserInterfaceManager.get()->GetUserInputOnlyNumber();
 
-			default:
-				_ptrUserInterfaceManager.get()->WaitForUserInput("잘못된 입력입니다. 다시 입력해주세요.");
-				break;
+		E_MAIN_MENU_INPUT_TYPE inputState = static_cast<E_MAIN_MENU_INPUT_TYPE>(mainMenuInput);
+
+		if (inputState == E_MAIN_MENU_INPUT_TYPE::EXIT_GAME) {
+			return;
 		}
 
-		if (!isRunning)
+		if (inputState == E_MAIN_MENU_INPUT_TYPE::START_GAME) 
 		{
-			_ptrUserInterfaceManager.get()->PrintText("게임을 종료합니다.");
-			break;
+			if (_ptrPlayer == nullptr)
+			{
+				_ptrPlayer = _ptrPlayerManager.get()->CreatePlayer();
+			}
+
+			ShowInGameMenu(); // 인게임 전용 루프로 진입
+		}
+		else
+		{
+			_ptrUserInterfaceManager.get()->WaitForUserInput("잘못된 입력입니다. 다시 입력해주세요.");
 		}
 	}
 }
 
-void GameManager::CreatePlayer()
+void GameManager::ShowInGameMenu()
 {
-	std::string playerName = _ptrUserInterfaceManager.get()->GetAskAndInputString("플레이어 이름을 입력하세요: ");
+	while (true)
+	{
+		auto menuList = std::vector<std::string>{ "플레이어 정보","상점 이동","던전 이동","메인 메뉴 이동" };
 
-	_ptrPlayer = std::make_unique<Player>(playerName);
+		auto inGameInput = _ptrUserInterfaceManager.get()->PrintMenuAndGetUserInput(menuList);
+		if (inGameInput == menuList.size())
+		{
+			return;
+		}
+
+		switch (inGameInput)
+		{
+		case 1: // 플레이어
+			_ptrPlayerManager.get()->ShowPlayerMenu();
+			break;
+
+		case 2: //상점 이동
+			_ptrUserInterfaceManager.get()->PrintText("상점 이동");
+			break;
+
+		case 3: //던전 이동
+			_ptrUserInterfaceManager.get()->PrintText("게임을 시작합니다.");
+			break;
+
+		default:
+			_ptrUserInterfaceManager.get()->WaitForUserInput("잘못된 입력입니다. 다시 입력해주세요.");
+			break;
+		}
+	}
 }

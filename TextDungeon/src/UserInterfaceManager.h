@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 class UserInterfaceManager
 {
@@ -11,7 +12,7 @@ class UserInterfaceManager
 	
 	void PrintText(const std::string& text) const;
 
-
+	int PrintMenuAndGetUserInput(const std::vector<std::string>& menuList) const;
 
 	void WaitForUserInput(const std::string& text) const;
 	int32_t GetUserInputOnlyNumber();

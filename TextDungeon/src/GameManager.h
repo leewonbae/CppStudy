@@ -4,9 +4,10 @@
 #include <memory>
 
 class UserInterfaceManager;
+class PlayerManager;
 class Player;
 
-enum class E_GAME_MANAGER_INPUT_STATE {
+enum class E_MAIN_MENU_INPUT_TYPE {
 	START_GAME = 1,
 	EXIT_GAME = 2
 };
@@ -17,15 +18,15 @@ public:
 	GameManager(const std::string& gameName);
 	~GameManager();
 
-	void InitManagers();
-	void StartGame();
+	void ShowMainMenu();
 
 private:
-	void CreatePlayer();
+	void ShowInGameMenu();
 
 	std::unique_ptr<UserInterfaceManager> _ptrUserInterfaceManager;
-
-	std::unique_ptr<Player> _ptrPlayer;
+	std::unique_ptr<PlayerManager> _ptrPlayerManager;
+	
+	Player*_ptrPlayer;
 
 	std::string _gameName;
 };

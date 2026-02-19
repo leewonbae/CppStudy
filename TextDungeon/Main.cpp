@@ -4,6 +4,5 @@ int main()
 {
     GameManager gameManager("TextDungeon");
 
-	gameManager.InitManagers();
-    gameManager.StartGame();
+    gameManager.ShowMainMenu();
 }

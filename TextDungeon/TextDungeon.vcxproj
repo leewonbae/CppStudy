@@ -129,6 +129,7 @@
     <ClCompile Include="src\Item.cpp" />
     <ClCompile Include="src\Monster.cpp" />
     <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\PlayerManager.cpp" />
     <ClCompile Include="src\UserInterfaceManager.cpp" />
     <ClCompile Include="src\Weapon.cpp" />
   </ItemGroup>
@@ -138,6 +139,7 @@
     <ClInclude Include="src\Item.h" />
     <ClInclude Include="src\Monster.h" />
     <ClInclude Include="src\Player.h" />
+    <ClInclude Include="src\PlayerManager.h" />
     <ClInclude Include="src\UserInterfaceManager.h" />
     <ClInclude Include="src\Weapon.h" />
   </ItemGroup>

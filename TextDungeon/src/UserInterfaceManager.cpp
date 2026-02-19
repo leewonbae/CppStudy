@@ -15,6 +15,25 @@ void UserInterfaceManager::PrintText(const std::string& text) const
 	std::cout << text << std::endl;
 }
 
+int32_t UserInterfaceManager::PrintMenuAndGetUserInput(const std::vector<std::string>& menuList) const
+{
+	int32_t num = 1;
+	
+	std::system("cls");
+
+	for(const auto& menu : menuList) {
+		std::cout << num <<" 번 : " << menu << std::endl;
+		
+		num++;
+	}
+
+	int32_t input;
+
+	std::cin >> input;
+
+	return input;
+}
+
 int32_t UserInterfaceManager::GetUserInputOnlyNumber()
 {
 	int32_t input;
@@ -46,7 +65,6 @@ void UserInterfaceManager::WaitForUserInput(const std::string& text) const
 {
 	std::cout << text << std::endl;
 
-	PrintText("\n계속하려면 아무 키나 입력하세요...");
 	// 입력 버퍼를 비우고 입력을 기다림
 	std::cin.clear();
 	std::cin.ignore(2147483647, '\n');
