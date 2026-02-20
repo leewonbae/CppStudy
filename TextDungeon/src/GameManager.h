@@ -4,6 +4,7 @@
 #include <memory>
 
 class UserInterfaceManager;
+class ShopManager;
 class PlayerManager;
 class Player;
 
@@ -24,8 +25,8 @@ private:
 	void ShowInGameMenu();
 
 	std::unique_ptr<UserInterfaceManager> _ptrUserInterfaceManager;
+	std::unique_ptr<ShopManager> _ptrShopManager;
 	std::unique_ptr<PlayerManager> _ptrPlayerManager;
-	
 	Player*_ptrPlayer;
 
 	std::string _gameName;

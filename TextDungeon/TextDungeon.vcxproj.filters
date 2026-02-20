@@ -13,6 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="헤더 파일\Managers">
+      <UniqueIdentifier>{6892e332-5b60-46a0-bcf2-1bc4c687ec7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Managers">
+      <UniqueIdentifier>{d6725bb6-e763-4588-80da-fb4cc9b33138}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Commons">
+      <UniqueIdentifier>{32b7cc2d-ce92-4106-865c-9cdc3ccd8e34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Exeption">
+      <UniqueIdentifier>{df09624d-4dde-4d39-b1c2-65c38d9012e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Exception">
+      <UniqueIdentifier>{e57f45b6-62f9-4505-9206-0346e0ddcad5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -31,19 +46,22 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="src\GameManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\UserInterfaceManager.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Managers</Filter>
     </ClCompile>
     <ClCompile Include="src\PlayerManager.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ShopManager.cpp">
+      <Filter>소스 파일\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UserInterfaceManager.cpp">
+      <Filter>소스 파일\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameException.cpp">
+      <Filter>소스 파일\Exception</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Commons.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="src\Item.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -57,13 +75,22 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="src\GameManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\UserInterfaceManager.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Managers</Filter>
     </ClInclude>
     <ClInclude Include="src\PlayerManager.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ShopManager.h">
+      <Filter>헤더 파일\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UserInterfaceManager.h">
+      <Filter>헤더 파일\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Commons.h">
+      <Filter>헤더 파일\Commons</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameException.h">
+      <Filter>헤더 파일\Exeption</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

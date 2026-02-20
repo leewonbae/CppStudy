@@ -1,8 +1,7 @@
 #include "PlayerManager.h"
-
 #include "UserInterfaceManager.h"
-
 #include "Player.h"
+#include "GameException.h"
 
 PlayerManager::PlayerManager(UserInterfaceManager* userinterfaceManagaer)
 	:_ptrUserInterfaceManager(userinterfaceManagaer),
@@ -33,7 +32,7 @@ void PlayerManager::ShowPlayerMenu() const
 			_ptrPlayer->ShowStatus();
 			break;
 		default:
-			break;
+			throw GameException(E_EXCEPTION_TYPE::INVALID_PLAYER_MENU_INPUT,"잘못된 입력입니다. 다시 입력해주세요.");
 		}
 
 		_ptrUserInterfaceManager->WaitForUserInput("계속하려면 아무 키나 누르세요.");

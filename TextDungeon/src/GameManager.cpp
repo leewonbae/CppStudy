@@ -1,12 +1,14 @@
 #include "GameManager.h"
 #include "PlayerManager.h"
 #include "UserInterfaceManager.h"
+#include "ShopManager.h"
 
 GameManager::GameManager(const std::string& gameName)
 	: _gameName(gameName),
 	_ptrPlayer(nullptr)
 {
 	_ptrUserInterfaceManager = std::make_unique<UserInterfaceManager>();
+	_ptrShopManager = std::make_unique<ShopManager>(_ptrUserInterfaceManager.get());
 	_ptrPlayerManager = std::make_unique<PlayerManager>(_ptrUserInterfaceManager.get());
 }
 
@@ -34,6 +36,7 @@ void GameManager::ShowMainMenu()
 			if (_ptrPlayer == nullptr)
 			{
 				_ptrPlayer = _ptrPlayerManager.get()->CreatePlayer();
+				_ptrShopManager.get()->SetPlayer(_ptrPlayer);
 			}
 
 			ShowInGameMenu(); // 인게임 전용 루프로 진입
@@ -64,7 +67,7 @@ void GameManager::ShowInGameMenu()
 			break;
 
 		case 2: //상점 이동
-			_ptrUserInterfaceManager.get()->PrintText("상점 이동");
+			_ptrShopManager.get()->ShowShopMenu();
 			break;
 
 		case 3: //던전 이동
