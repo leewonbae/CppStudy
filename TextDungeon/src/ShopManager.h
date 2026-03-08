@@ -12,11 +12,10 @@ public:
 	ShopManager(UserInterfaceManager* userInterfaceManager);
 	~ShopManager();
 
-	void SetPlayer(Player* player);
-	void ShowShopMenu() const;
+	void ShowShopMenu(Player* player) const;
 
 private:
-	void ShowBuyMenu() const;
+	void ShowBuyMenu(Player* player) const;
 
 	Player* _ptrPlayer;
 	UserInterfaceManager* _ptrUserInterfaceManager;

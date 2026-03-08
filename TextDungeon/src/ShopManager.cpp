@@ -1,7 +1,13 @@
 #include "ShopManager.h"
 
+#include "Item.h"
+#include "Weapon.h"
+#include "Armor.h"
+#include "Potion.h"
+
 #include "UserInterfaceManager.h"
 #include "GameException.h"
+#include "Player.h"
 
 ShopManager::ShopManager(UserInterfaceManager* userInterfaceManager)
 	:_ptrUserInterfaceManager(userInterfaceManager),
@@ -18,12 +24,7 @@ ShopManager::~ShopManager()
 	_ptrUserInterfaceManager->PrintText("ShopManager 소멸자");
 }
 
-void ShopManager::SetPlayer(Player* player)
-{
-	_ptrPlayer = player;
-}
-
-void ShopManager::ShowShopMenu() const
+void ShopManager::ShowShopMenu(Player* player) const
 {
 	while (true)
 	{
@@ -36,7 +37,7 @@ void ShopManager::ShowShopMenu() const
 		switch (shopMenuInput)
 		{
 		case 1:
-			ShowBuyMenu();
+			ShowBuyMenu(player);
 			break;
 		case 2:
 			_ptrUserInterfaceManager->PrintText("아이템 판매 선택");
@@ -48,7 +49,7 @@ void ShopManager::ShowShopMenu() const
 	}
 }
 
-void ShopManager::ShowBuyMenu() const
+void ShopManager::ShowBuyMenu(Player* player) const
 {
 	_ptrUserInterfaceManager->PrintText("아이템 구매 선택");
 	auto buyInput = _ptrUserInterfaceManager->PrintMenuAndGetUserInput(_buyMenuList);
@@ -58,19 +59,25 @@ void ShopManager::ShowBuyMenu() const
 		return;
 	}
 
+	std::unique_ptr<Item> item;
 	switch (buyInput)
 	{
 	case 1:
 		_ptrUserInterfaceManager->PrintText("검 구매 선택");
+		item = std::make_unique<Weapon>("검",10);
 		break;
 	case 2:
 		_ptrUserInterfaceManager->PrintText("방패 구매 선택");
+		item = std::make_unique<Armor>("방패", 10);
 		break;
 	case 3:
 		_ptrUserInterfaceManager->PrintText("포션 구매 선택");
+		item = std::make_unique<Potion>("소형포션", 10);
 		break;
 	default:
 		throw GameException(E_EXCEPTION_TYPE::INVALID_SHOP_MENU_INPUT, "INVALID_SHOP_MENU_INPUT");
 	}
+
+	player->AddItemInInventory(std::move(item));
 }
 

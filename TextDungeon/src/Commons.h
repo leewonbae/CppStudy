@@ -14,6 +14,13 @@ enum class E_ITEM_SLOT{
 	BACK
 };
 
+enum class E_ITEM_TYPE {
+	WEAPON,
+	ARMOR,
+	POTION,
+	ETC
+};
+
 enum class E_EXCEPTION_TYPE {
 	PLAYER_PTR_IS_NULL,
 	INVALID_PLAYER_MENU_INPUT,

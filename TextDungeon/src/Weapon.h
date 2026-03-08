@@ -1,6 +1,7 @@
 #pragma once
 #include "Item.h"
 #include <string>
+
 class Weapon : public Item
 {
 public :
@@ -8,6 +9,7 @@ public :
 	Weapon(std::string name, int32_t damage);
 	~Weapon() override;
 
+	std::string GetDetailInfo() const override;
 	int GetDamage() const { return _damage; }
 private:
 	int32_t _damage;

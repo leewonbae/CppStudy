@@ -7,6 +7,7 @@
 class Player;
 class UserInterfaceManager;
 
+class Item;
 class PlayerManager
 {
 public:

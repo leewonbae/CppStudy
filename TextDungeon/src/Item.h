@@ -7,13 +7,17 @@ class Item
 {
 public:
 	Item();
-	Item(std::string name, E_ITEM_SLOT itemSlot);
+	Item(std::string name, E_ITEM_TYPE itemType);
 
 	std::string GetName() const;
-	E_ITEM_SLOT GetItemSlot() const;
+	std::string GetItemType() const;
+	virtual std::string GetDetailInfo() const = 0; 
 	virtual ~Item();
+
 private:
 	std::string _name;
-	E_ITEM_SLOT _itemSlot = E_ITEM_SLOT::NONE;
+	E_ITEM_TYPE _itemType;
+	
+	std::string ConvertItemTypeToEnum(E_ITEM_TYPE itemType) const;
 };
 

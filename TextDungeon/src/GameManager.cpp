@@ -36,7 +36,6 @@ void GameManager::ShowMainMenu()
 			if (_ptrPlayer == nullptr)
 			{
 				_ptrPlayer = _ptrPlayerManager.get()->CreatePlayer();
-				_ptrShopManager.get()->SetPlayer(_ptrPlayer);
 			}
 
 			ShowInGameMenu(); // 인게임 전용 루프로 진입
@@ -67,7 +66,7 @@ void GameManager::ShowInGameMenu()
 			break;
 
 		case 2: //상점 이동
-			_ptrShopManager.get()->ShowShopMenu();
+			_ptrShopManager.get()->ShowShopMenu(_ptrPlayer);
 			break;
 
 		case 3: //던전 이동

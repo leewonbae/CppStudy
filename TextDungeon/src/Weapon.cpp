@@ -1,11 +1,10 @@
 #include "Weapon.h"
-
 Weapon::Weapon()
 {
 	std::cout << "Weapon 기본 생성자 " << std::endl;
 }
 
-Weapon::Weapon(std::string name, int32_t damage) : Item(name,E_ITEM_SLOT::LEFT_HAND)
+Weapon::Weapon(std::string name, int32_t damage) : Item(name,E_ITEM_TYPE::WEAPON)
 { 
 	_damage = damage;
 
@@ -15,4 +14,9 @@ Weapon::Weapon(std::string name, int32_t damage) : Item(name,E_ITEM_SLOT::LEFT_H
 Weapon::~Weapon()
 {
 	std::cout << "무기 메모리 삭제 " << std::endl;
+}
+
+std::string Weapon::GetDetailInfo() const 
+{
+	return " 상세 정보 -> 데미지 : [" + std::to_string(_damage) + "]" ;
 }

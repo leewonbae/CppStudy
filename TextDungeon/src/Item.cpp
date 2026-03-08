@@ -5,10 +5,9 @@ Item::Item()
 	std::cout << "item 기본 생성자" << std::endl;
 }
 
-Item::Item(std::string name, E_ITEM_SLOT itemSlot)
+Item::Item(std::string name, E_ITEM_TYPE itemType) :
+_name(name), _itemType(itemType)
 {
-	_name = name;
-	_itemSlot = itemSlot;
 	std::cout << "item 오버라이딩 생성자"<< std::endl;
 }
 
@@ -17,13 +16,28 @@ std::string Item::GetName() const
 	return _name;
 }
 
-E_ITEM_SLOT Item::GetItemSlot() const
+std::string Item::GetItemType() const
 {
-	return _itemSlot;
+	return  ConvertItemTypeToEnum(_itemType);
 }
 
 Item::~Item()
 {
 	std::cout << "item 소멸 " << std::endl;
+}
+
+std::string Item::ConvertItemTypeToEnum(E_ITEM_TYPE itemType) const
+{
+	switch (itemType)
+	{
+	case E_ITEM_TYPE::WEAPON:
+		return "WEAPON";
+	case E_ITEM_TYPE::ARMOR:
+		return "ARMOR";
+	case E_ITEM_TYPE::POTION:
+		return "POTION";
+	case E_ITEM_TYPE::ETC:
+		return "ETC";
+	}
 }
 

@@ -7,7 +7,7 @@
 #include "Commons.h"
 
 class Monster;
-class Weapon;
+class Item;
 
 class Player
 {
@@ -16,17 +16,15 @@ public:
 	Player(std::string name);
 	~Player();
 
-	void EquipItem(std::unique_ptr<Item> ptrItem);
-	void SetTargetMonster(Monster* targetMonster);
-	void AttackMonster();
 	void ShowStatus() const;
+	void AddItemInInventory(std::unique_ptr<Item> item);
+	void ShowInventory() const;
 	std::string GetName() const { return _name; }
 
 private:
 	std::string _name;
 	int32_t _healthPoint;
-	Monster* _ptrTargetMonster;
-	std::unordered_map<E_ITEM_SLOT, std::unique_ptr<Item>> _itemSlotMap;
-	Weapon* _currentWeapon;
+	std::vector<std::unique_ptr<Item>> _inventory;
+
 	void Init();
 };
